@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "492186469928",
+    "firebase_url": "https://debtbookapp-55bbb.firebaseio.com",
+    "project_id": "debtbookapp-55bbb",
+    "storage_bucket": "debtbookapp-55bbb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492186469928:android:a5b46c99253cc79e",
+        "android_client_info": {
+          "package_name": "com.example.pengendaliapi.debtbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492186469928-m24tdqde44rti3fceg22mnf6i4sl6iid.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABoC2_QpDm-GSc4_fbwIn0stzFg6PWba4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492186469928-m24tdqde44rti3fceg22mnf6i4sl6iid.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
