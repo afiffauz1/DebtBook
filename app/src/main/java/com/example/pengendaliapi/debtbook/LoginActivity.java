@@ -1,5 +1,6 @@
 package com.example.pengendaliapi.debtbook;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 
@@ -84,11 +85,18 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    sendUserToDashboardActivity();
                     Toast.makeText(LoginActivity.this, "Login success!",Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(LoginActivity.this, "Please recheck your email or password",Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    private void sendUserToDashboardActivity(){
+        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

@@ -38,11 +38,19 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         if (currentUser == null){
             sendUserToGuestActivity();
+        } else {
+            sendUserToDashboardActivity();
         }
     }
 
     private void sendUserToGuestActivity(){
         Intent intent = new Intent(MainActivity.this, GuestActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    private void sendUserToDashboardActivity(){
+        Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
