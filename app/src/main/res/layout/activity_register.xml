@@ -1,23 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        android:layout_height="match_parent">
+        
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content">
 
-    </com.google.android.material.appbar.AppBarLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <EditText
+                android:id="@+id/EdEmail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="200dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="E-mail"
+                android:paddingLeft="20dp"
+                android:background="@drawable/button_overlay_pink"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+            <EditText
+                android:id="@+id/EdUsername"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="Username"
+                android:paddingLeft="20dp"
+                android:background="@drawable/button_overlay_pink"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@id/EdEmail"
+                />
+            <EditText
+                android:id="@+id/EdFullname"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="Fullname"
+                android:paddingLeft="20dp"
+                android:background="@drawable/button_overlay_pink"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@id/EdUsername"
+                />
+            <EditText
+                android:id="@+id/EdPhone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="Phone"
+                android:paddingLeft="20dp"
+                android:background="@drawable/button_overlay_pink"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@id/EdFullname"
+                />
+            <EditText
+                android:id="@+id/EdPassword"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="Password"
+                android:paddingLeft="20dp"
+                android:background="@drawable/button_overlay_pink"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@id/EdPhone"
+                />
+            <EditText
+                android:id="@+id/EdRePassword"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="Re-type Password"
+                android:paddingLeft="20dp"
+                android:background="@drawable/button_overlay_pink"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@id/EdPassword"
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
