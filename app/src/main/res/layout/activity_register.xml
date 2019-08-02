@@ -92,6 +92,19 @@
                 android:layout_marginRight="20dp"
                 android:layout_below="@id/EdPassword"
                 />
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:text="REGISTER"
+                android:textColor="#fff"
+                android:layout_below="@id/EdRePassword"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/button_solid_pink"
+                />
 
         </RelativeLayout>
     </ScrollView>
