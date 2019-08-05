@@ -11,7 +11,10 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,18 +33,19 @@ public class LoginActivity extends AppCompatActivity {
     Button bLoginButton;
     TextView tvForgotPassword;
     FirebaseAuth fbAuth;
+    FirebaseDatabase fbDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         etEmail = (EditText)findViewById(R.id.email);
         etPassword = (EditText)findViewById(R.id.password);
         bLoginButton = (Button)findViewById(R.id.loginButton);
         tvForgotPassword = (TextView)findViewById(R.id.forgotPassword);
         fbAuth = FirebaseAuth.getInstance();
+        fbDatabase = FirebaseDatabase.getInstance();
 
         bLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (!email.isEmpty() && !password.isEmpty()) {
                     login();
+//                    loginWithUsername();
                 } else {
                     Toast.makeText(LoginActivity.this, "Please fill in all fields",Toast.LENGTH_SHORT).show();
                 }
@@ -90,6 +95,43 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(LoginActivity.this, "Please recheck your email or password",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+    private void loginWithUsername() {
+        final String username = etEmail.getText().toString();
+        final String password = etPassword.getText().toString();
+
+        fbDatabase.getReference().child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot uidSnapshot : dataSnapshot.getChildren()) {
+                    String un = uidSnapshot.child("username").getValue().toString();
+
+                    if (un.equals(username)) {
+                        String email = uidSnapshot.child("email").getValue().toString();
+
+                        Toast.makeText(LoginActivity.this, email,Toast.LENGTH_SHORT).show();
+
+                        fbAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    sendUserToDashboardActivity();
+                                    Toast.makeText(LoginActivity.this, "Login success!",Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Please recheck your email or password",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
