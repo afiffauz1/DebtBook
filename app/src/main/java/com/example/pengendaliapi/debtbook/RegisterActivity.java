@@ -63,7 +63,13 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "please Complete field", Toast.LENGTH_SHORT).show();
                 } else if (!password.equals(retype)){
                     Toast.makeText(RegisterActivity.this, "your password is different", Toast.LENGTH_SHORT).show();
-                } else {
+                } else if (username.contains(" ")){
+                    Toast.makeText(RegisterActivity.this, "non spaces username", Toast.LENGTH_SHORT).show();
+                } else if (username.contains(" ") || username.contains("/") || username.contains("-") || username.contains("@") || username.contains(",") || username.contains("'")){
+                    Toast.makeText(RegisterActivity.this, "forbidden symbol for username", Toast.LENGTH_SHORT).show();
+                }
+
+                else {
                     createNewAccount();
                     sendUserToDashboardActivity();
                 }
