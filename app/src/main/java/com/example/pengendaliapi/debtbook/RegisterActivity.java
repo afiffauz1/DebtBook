@@ -22,6 +22,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText edEmail, edUsername, edFullname, edPhone, edPassword, edReTypePassword;
@@ -85,8 +88,9 @@ public class RegisterActivity extends AppCompatActivity {
                     String fullname  = edFullname.getText().toString().trim();
                     String phone = edPhone.getText().toString().trim();
                     String password = edPassword.getText().toString().trim();
+                    String hashPassword = sha256(password);
 
-                    Users users = new Users(uid,email, username, fullname, phone, password);
+                    Users users = new Users(uid,email, username, fullname, phone, hashPassword);
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
                     mDatabase.child(uid).setValue(users);
 
@@ -108,5 +112,23 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public String sha256(String base){
+        try{
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(base.getBytes("UTF-8"));
+            StringBuffer hexString = new StringBuffer();
+
+            for (int i = 0; i < hash.length; i++){
+                String hex = Integer.toHexString(0xff & hash[i]);
+                if (hex.length() == 1 ) hexString.append('0');
+                hexString.append(hex);
+            }
+
+            return hexString.toString();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }
