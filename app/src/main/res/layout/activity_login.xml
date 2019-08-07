@@ -24,14 +24,13 @@
                 />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/user"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/button_overlay_pink"
-                android:hint="E-mail Address"
+                android:hint="Username or E-mail Address"
                 android:textAlignment="center"
                 android:ems="10"
-                android:inputType="textEmailAddress"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -51,7 +50,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_below="@id/email"
+                android:layout_below="@id/user"
                 android:layout_centerHorizontal="true"
                 />
 
